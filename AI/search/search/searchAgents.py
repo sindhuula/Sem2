@@ -225,6 +225,20 @@ class PositionSearchProblem(search.SearchProblem):
             if self.walls[x][y]: return 999999
             cost += self.costFn((x,y))
         return cost
+# Number of nodes expanded Smaller than other functions but doesn't work for Scary
+class newSearchAgent(SearchAgent):
+     def __init__(self):
+        import math
+        self.searchFunction = search.uniformCostSearch
+        costFn = lambda pos: 0.25 ** math.fabs(pos[1]-pos[0])
+        self.searchType = lambda state: PositionSearchProblem(state, costFn, (1, 1), None, False)
+# Number of nodes expanded Much smaller than StayWestSearchAgent but too high for the rest
+class newSearchAgent1(SearchAgent):
+     def __init__(self):
+        import math
+        self.searchFunction = search.uniformCostSearch
+        costFn = lambda pos: 1.5 ** math.fabs(pos[1]-pos[0])
+        self.searchType = lambda state: PositionSearchProblem(state, costFn, (1, 1), None, False)
 
 class StayEastSearchAgent(SearchAgent):
     """
@@ -284,49 +298,51 @@ class CornersProblem(search.SearchProblem):
         for corner in self.corners:
             if not startingGameState.hasFood(*corner):
                 print 'Warning: no food in corner ' + str(corner)
-        self._expanded = 0 # DO NOT CHANGE; Number of search nodes expanded
-        # Please add any code here which you would like to use
-        # in initializing the problem
-        "*** YOUR CODE HERE ***"
+        self._expanded = 0 # Number of search nodes expanded
 
     def getStartState(self):
-        """
-        Returns the start state (in your state space, not the full Pacman state
-        space)
-        """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return (self.startingPosition, [])
 
     def isGoalState(self, state):
-        """
-        Returns whether this search state is a goal state of the problem.
-        """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        node = state[0]
+        visitedCorners = state[1]
+        if node in self.corners:
+            if not node in visitedCorners:
+                visitedCorners.append(node)
+            return len(visitedCorners) == 4
+        return False
 
     def getSuccessors(self, state):
         """
         Returns successor states, the actions they require, and a cost of 1.
 
          As noted in search.py:
-            For a given state, this should return a list of triples, (successor,
-            action, stepCost), where 'successor' is a successor to the current
-            state, 'action' is the action required to get there, and 'stepCost'
-            is the incremental cost of expanding to that successor
+             For a given state, this should return a list of triples,
+         (successor, action, stepCost), where 'successor' is a
+         successor to the current state, 'action' is the action
+         required to get there, and 'stepCost' is the incremental
+         cost of expanding to that successor
         """
+
+        x,y = state[0]
+        visitedCorners = state[1]
 
         successors = []
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
-            # Add a successor state to the successor list if the action is legal
-            # Here's a code snippet for figuring out whether a new position hits a wall:
-            #   x,y = currentPosition
-            #   dx, dy = Actions.directionToVector(action)
-            #   nextx, nexty = int(x + dx), int(y + dy)
-            #   hitsWall = self.walls[nextx][nexty]
 
-            "*** YOUR CODE HERE ***"
+            dx, dy = Actions.directionToVector(action)
+            nextx, nexty = int(x + dx), int(y + dy)
+            hitsWall = self.walls[nextx][nexty]
+            if not hitsWall:
+                successorVisitedCorners = list(visitedCorners)
+                next_node = (nextx, nexty)
+                if next_node in self.corners:
+                    if not next_node in successorVisitedCorners:
+                        successorVisitedCorners.append( next_node )
+                successor = ((next_node, successorVisitedCorners), action, 1)
+                successors.append(successor)
 
-        self._expanded += 1 # DO NOT CHANGE
+        self._expanded += 1
         return successors
 
     def getCostOfActions(self, actions):
