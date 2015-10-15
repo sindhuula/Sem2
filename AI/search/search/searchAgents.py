@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -309,8 +309,10 @@ class CornersProblem(search.SearchProblem):
         if node in self.corners:
             if not node in visitedCorners:
                 visitedCorners.append(node)
-            return len(visitedCorners) == 4
-        return False
+        if len(visitedCorners) == 4:
+            return True
+        else:
+            return False
 
     def getSuccessors(self, state):
         """
@@ -372,11 +374,30 @@ def cornersHeuristic(state, problem):
     shortest path from the state to a goal of the problem; i.e.  it should be
     admissible (as well as consistent).
     """
+#    from util import manhattanDistance
     corners = problem.corners # These are the corner coordinates
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
+    currentState = state[0]
+    visitedStates = state[1]
+    toBeVisitedStates = []
+    #[corner for corner in corners if corner not in visitedStates]
 
-    "*** YOUR CODE HERE ***"
-    return 0 # Default to trivial solution
+   #  toBeVisitedStates = set(corners)-set(visitedStates)
+    sum = 0
+    for corner in corners:
+        if not corner in visitedStates:
+            toBeVisitedStates.append(corner)
+    print toBeVisitedStates
+    currentNode = currentState
+    while len(toBeVisitedStates) > 0:
+        distance = []
+        for corner in toBeVisitedStates:
+            distance += [abs(currentNode[0] - corner[0]) + abs( currentNode[1] - corner[1])]
+        sum += min(distance)
+        index = distance.index(min(distance))
+        currentNode = toBeVisitedStates[index]
+        toBeVisitedStates.remove(toBeVisitedStates[index])
+    return sum
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
@@ -468,9 +489,16 @@ def foodHeuristic(state, problem):
     Subsequent calls to this heuristic can access
     problem.heuristicInfo['wallCount']
     """
+    # Max Manhattan Distance from pacman to food
     position, foodGrid = state
-    "*** YOUR CODE HERE ***"
-    return 0
+    h = foodGrid.height
+    w = foodGrid.width
+    count = 0
+    for x in range(w):
+      for y in range(h):
+        if foodGrid[x][y]:
+          count = max(count, abs(x-position[0]) + abs(y-position[1]))
+    return count
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"

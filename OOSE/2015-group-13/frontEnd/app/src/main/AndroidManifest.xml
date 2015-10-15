@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.oose2015.group13.frontend.battleship" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".StartActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.oose2015.group13.frontend.battleship.StartActivity" />
+        </activity>
+        <activity
+            android:name=".ViewGamesActivity"
+            android:label="@string/title_activity_view_games"
+            android:parentActivityName=".StartActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.oose2015.group13.frontend.battleship.StartActivity" />
+        </activity>
+        <activity
+            android:name=".CreateGameActivity"
+            android:label="@string/title_activity_create_game"
+            android:parentActivityName=".ViewGamesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ViewGamesActivity" />
+        </activity>
+        <activity
+            android:name=".PlayGameActivity"
+            android:label="@string/title_activity_play_game"
+            android:parentActivityName=".ViewGamesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ViewGamesActivity" />
+        </activity>
+    </application>
+
+</manifest>

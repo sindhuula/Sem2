@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -72,6 +72,7 @@ def tinyMazeSearch(problem):
     w = Directions.WEST
     return  [s, s, w, s, w, w, s, w]
 
+
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.
@@ -88,73 +89,73 @@ def depthFirstSearch(problem):
     """
     from util import Stack
     start = problem.getStartState()
-    stack = Stack()
-    stack.push((start,[],[]))
-    while not stack.isEmpty():
-            popState, popDirection, visitedStates = stack.pop()
+    checkStack = Stack()
+    checkStack.push((start,[]))
+    visitedStates = []
+    while not checkStack.isEmpty():
+            popState, popDirection = checkStack.pop()
             for successors in problem.getSuccessors(popState):
                 state, direction, cost  = successors
                 if not state in visitedStates:
                     if problem.isGoalState(state):
                         return popDirection + [direction]
-                    stack.push((state,popDirection+ [direction],visitedStates+[popState]))
+                    checkStack.push((state,popDirection+
+                                     +
 
-#util.raiseNotDefined()
+                                     [direction]))
+                    visitedStates = visitedStates+[popState]
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     from util import Queue
     start = problem.getStartState()
-    queue = Queue()
-    queue.push((start,[]))
+    checkQueue = Queue()
+    checkQueue.push((start,[]))
     visitedStates = []
-    while not queue.isEmpty():
-        popState,popDirection= queue.pop()
+    while not checkQueue.isEmpty():
+        popState,popDirection= checkQueue.pop()
         for successors in problem.getSuccessors(popState):
             state,direction,cost = successors
             if not state in visitedStates:
                 if problem.isGoalState(state):
                     return popDirection + [direction]
-                queue.push((state, popDirection +[direction]))
+                checkQueue.push((state, popDirection +[direction]))
                 visitedStates.append(state)
-
     return []
 
-#util.raiseNotDefined()
 def iterativeDeepeningSearch(problem):
     depth = 0
-    while depth>=0:
-        result = depthLimitedSearch(problem,depth)
-        if result is not "cutoff" :
-            return result
-        depth += 1
 
-def depthLimitedSearch(problem,depth):
-    return recDepthLimitedSearch(problem.getStartState(),problem,depth,[],[])
-def recDepthLimitedSearch(start,problem,depth,path,visited):
-   if (problem.isGoalState(start)):
-        return (path)
-   elif depth == 0:
-        return ("cutoff")
-   else:
-       cutoffReached = False
-       for successors in problem.getSuccessors(start):
-            state,direction,cost = successors
-          # path = path+ [direction]
-            if state not in visited:
-                  result = recDepthLimitedSearch(state,problem,depth-1,path + [direction], visited + [state])
-                  if result == "cutoff":
-                        cutoffReached = True
-                  elif result is not "failure":
-                        return result
-       if cutoffReached is True:
-                return ("cutoff")
-       else:
-                return ("failure")
+    while depth>=0:
+        solution = depthlimitedSearch(problem,depth)
+        if solution != "Limit_reached":
+            return solution
+        depth +=1
+
+def depthlimitedSearch(problem,depth):
+    checkStack = util.Stack()
+    checkStack.push((problem.getStartState(),[], 0))
+    visited = []
+    end = False
+
+    while True:
+        if checkStack.isEmpty():
+            return "Limit_reached"
+        currentState, directions, localdepth = checkStack.pop()
+        if currentState not in visited:
+            visited.append(currentState)
+            if localdepth == depth:
+                end = True
+            else:
+                for state, action, cost in problem.getSuccessors(currentState):
+                    if state not in visited:
+                        if problem.isGoalState(state):
+                            return directions + [action]
+                        checkStack.push((state, directions + [action], localdepth + 1))
+
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
-    "*** YOUR CODE HERE ***"
     from util import PriorityQueue
     checkQueue=PriorityQueue()
     start=problem.getStartState()
@@ -166,10 +167,10 @@ def uniformCostSearch(problem):
           return popDirection
        visited.append(popState)
        for successors in problem.getSuccessors(popState):
-           state, direction, cost  = successors
+           state, direction, cost = successors
            if not state in visited:
               nextState = popDirection+[direction]
-              checkQueue.push((state,nextState), problem.getCostOfActions(nextState))
+              checkQueue.push((state,nextState), cost)
 
     return[]
 
@@ -182,25 +183,24 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
-    "*** YOUR CODE HERE ***"
     from util import PriorityQueue
     checkQueue=PriorityQueue()
     start=problem.getStartState()
     visited = []
-    checkQueue.push((start, []), 0)
+    checkQueue.push((start, []), heuristic(start,problem))
     while not checkQueue.isEmpty():
-       popState, popDirection= checkQueue.pop()
+      # print "visit", visited
+       popState, popDirection = checkQueue.pop()
        if problem.isGoalState(popState):
           return popDirection
        visited.append(popState)
        for successors in problem.getSuccessors(popState):
-           state, direction, cost  = successors
+           state, direction, cost = successors
            if not state in visited:
               nextState = popDirection+[direction]
-              checkQueue.push((state,nextState), problem.getCostOfActions(nextState)+ heuristic(state,problem))
+              checkQueue.push((state,nextState), cost + heuristic(state,problem))
 
     return[]
-    #util.raiseNotDefined()
 
 
 # Abbreviations
@@ -208,3 +208,4 @@ bfs = breadthFirstSearch
 dfs = depthFirstSearch
 astar = aStarSearch
 ucs = uniformCostSearch
+its = iterativeDeepeningSearch
