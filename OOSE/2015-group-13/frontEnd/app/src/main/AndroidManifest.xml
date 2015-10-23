@@ -2,23 +2,35 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oose2015.group13.frontend.battleship" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:screenOrientation="landscape"
+
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        >
         <activity
             android:name=".StartActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:hardwareAccelerated="false" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
+            android:screenOrientation="landscape"
             android:parentActivityName=".StartActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -27,6 +39,7 @@
         <activity
             android:name=".ViewGamesActivity"
             android:label="@string/title_activity_view_games"
+            android:screenOrientation="landscape"
             android:parentActivityName=".StartActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -35,6 +48,7 @@
         <activity
             android:name=".CreateGameActivity"
             android:label="@string/title_activity_create_game"
+            android:screenOrientation="landscape"
             android:parentActivityName=".ViewGamesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -43,6 +57,7 @@
         <activity
             android:name=".PlayGameActivity"
             android:label="@string/title_activity_play_game"
+            android:screenOrientation="landscape"
             android:parentActivityName=".ViewGamesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

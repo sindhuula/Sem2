@@ -9,11 +9,19 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- *
+ * In this activity, user views and manages current games with which the user
+ * is associated.  The method retrieveGames quiries the server for associated games
+ * and their status.  This activity launches the CreateNewGame Activity and the
+ * PlayGame Activity.  This activity is queued as the most recently run activity while
+ * a user is playing a game, and will be resumed when a player ends the PlayGame activity.
  */
 
 public class ViewGamesActivity extends AppCompatActivity {
 
+
+    /**
+     * This data member holds the relevant data for games with which the player is associated.
+     */
     public ArrayList<Map<Integer, String>> GamesAndStatus;
 
     @Override
@@ -49,8 +57,8 @@ public class ViewGamesActivity extends AppCompatActivity {
      * with the user's userID and recieves all games in which this user is involved, either
      * as a current player or a requested player.  This information is represented as a string,
      * which is later input into a transformer which creates the GamesAndStatus data member.
-     * @param userID
-     * @return gamesStatus
+     * @param userID            Identifies userID to server
+     * @return                  gamesStatus in form of string
      */
     public String retrieveGames(String userID){
 
@@ -59,7 +67,7 @@ public class ViewGamesActivity extends AppCompatActivity {
 
     /**
      * Launches CreateGame Activity, passing the userID string in through an intent
-     * @param userID
+     * @param userID            Identifies userID to server
      */
     public void createGame(String userID){
         // launch CreateGameActivity
@@ -68,8 +76,8 @@ public class ViewGamesActivity extends AppCompatActivity {
 
     /**
      * Launches PlayGameActivity, passing the user's userID and gameID through an intent
-     * @param userID
-     * @param gameID
+     * @param userID            Identifies user to server
+     * @param gameID            Identifies game to server
      */
     public void launchGame(String userID, String gameID){
         // launch PlayGameActivity

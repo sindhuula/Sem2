@@ -1,3 +1,4 @@
+drop table Faculty;
 create table Faculty (
        FacID 	       INTEGER,
        Lname		VARCHAR(15),
@@ -9,6 +10,7 @@ create table Faculty (
        Building		VARCHAR(13)
 );
 
+drop table Department;
 create table Department (
        DNO   		INTEGER,
        Division		VARCHAR(2),
@@ -18,12 +20,14 @@ create table Department (
        DPhone		INTEGER
 );
 
+drop table Member_of;
 create table Member_of (
        FacID 	       INTEGER,
        DNO	       INTEGER,
        Appt_Type       VARCHAR(15)
 );
 
+drop table Course;
 create table Course (
        CID   	    	VARCHAR(7),
        CName		VARCHAR(40),
@@ -34,6 +38,7 @@ create table Course (
        DNO		INTEGER
 );
 
+drop table City;
 create table City (
        city_code  	VARCHAR(3),
        city_name  	VARCHAR(25),
@@ -43,6 +48,7 @@ create table City (
        longitude	FLOAT
 );
 
+drop table Student;
 create table Student (
        StuID    	INTEGER,
        LName		VARCHAR(12),
@@ -54,22 +60,26 @@ create table Student (
        city_code	VARCHAR(3)
 );
 
+drop table Minor_in;
 create table Minor_in (
        StuID 	      INTEGER,
        DNO		INTEGER
 );
 
+drop table Enrolled_in;
 create table Enrolled_in (
        StuID 		 INTEGER,
        CID		VARCHAR(7),
        Grade		VARCHAR(2)
 );
 
+drop table Gradeconversion;
 create table Gradeconversion (
        lettergrade	     VARCHAR(2),
        gradepoint	     FLOAT
 );
 
+drop table Dorm;
 create table Dorm (
        dormid		INTEGER,
        dorm_name	VARCHAR(20),
@@ -77,38 +87,45 @@ create table Dorm (
        gender			VARCHAR(1)
 ) ;
 
+drop table Dorm_amenity;
 create table Dorm_amenity (
        amenid			INTEGER,
        amenity_name		VARCHAR(25)
 ) ;
 
+drop table Has_amenity;
 create table Has_amenity (
        dormid			INTEGER,
        amenid				INTEGER
 );
 
+drop table Lives_in;
 create table Lives_in (
        stuid 	      INTEGER,
        dormid		INTEGER,
        room_number	INTEGER
 );
 
+drop table Activity ;
 create table Activity (
   actid INTEGER ,
   activity_name varchar(25)
 );
 
+drop table Participates_in ;
 create table Participates_in (
   stuid INTEGER,
   actid INTEGER
 );
 
+drop table Faculty_Participates_in ;
 create table Faculty_Participates_in (
   FacID INTEGER,
   actid INTEGER
 );
 
 
+drop table Direct_distance ;
 create table Direct_distance (
   city1_code varchar(3) ,
   city2_code varchar(3) ,
@@ -116,6 +133,7 @@ create table Direct_distance (
 ) ;
 
 
+drop table Preferences;
 create table Preferences (
        StuID 		 INTEGER,
        SleepHabits	 VARCHAR(20),
@@ -123,21 +141,25 @@ create table Preferences (
        Smoking		VARCHAR(10)
 );
 
+drop table Loves;
 create table Loves (
        WhoLoves	   INTEGER,
        WhoIsLoved  INTEGER
 );
 
+drop table Likes;
 create table Likes (
        WhoLikes	   INTEGER,
        WhoIsLiked  INTEGER
 );
 
+drop table Has_Allergy;
 create table Has_Allergy (
        StuID 		 INTEGER,
        Allergy 		 VARCHAR(20)
 );
 
+drop table Allergy_Type;
 create table Allergy_Type (
        Allergy 		  VARCHAR(20),
        AllergyType 	  VARCHAR(20)
@@ -1622,13 +1644,14 @@ insert into Direct_distance values ( 'WAS' , 'PHL' , 119 ) ;
 insert into Direct_distance values ( 'WAS' , 'ROC' , 296 ) ;
 insert into Direct_distance values ( 'YYZ' , 'BAL' , 347 ) ;
 
-
+drop table Video_Games;
 create table Video_Games (
        GameID           INTEGER,
        GName            VARCHAR(40),
        GType            VARCHAR(40)
 );
 
+drop table Plays_Games;
 create table Plays_Games (
        StuID                INTEGER,
        GameID            INTEGER,
@@ -1653,7 +1676,7 @@ insert into Plays_Games values ( 1032, 1, 47);
 insert into Plays_Games values ( 1032, 2, 10);
 insert into Plays_Games values ( 1032, 3, 100);
 
-
+drop table sportsinfo;
 create table SportsInfo (
   StuID INTEGER,
   SportName VARCHAR(32),
@@ -1662,11 +1685,17 @@ create table SportsInfo (
   OnScholarship VARCHAR(1)
 );
 
-INSERT INTO SportsInfo VALUES (23, "Basketball", 7, 20, "Y");
-INSERT INTO SportsInfo VALUES (15, "Lacrosse", 25, 41, "Y");
-INSERT INTO SportsInfo VALUES (22, "Baseball", 35, 16, "N");
-INSERT INTO SportsInfo VALUES (23, "Tennis", 2, 5, "N");
-INSERT INTO SportsInfo VALUES (71, "Football", 45, 18, "Y");
-
-
-
+INSERT INTO SportsInfo VALUES (1001, "Athletics", 2, 5, "N");
+INSERT INTO SportsInfo VALUES (1002, "Football", 7, 20, "Y");
+INSERT INTO SportsInfo VALUES (1003, "Football", 45, 18, "Y");
+INSERT INTO SportsInfo VALUES (1005, "Lacrosse", 35, 16, "N");
+INSERT INTO SportsInfo VALUES (1015, "Lacrosse", 25, 41, "Y");
+INSERT INTO SportsInfo VALUES (1018, "Lacrosse", 39, 25, "N");
+INSERT INTO SportsInfo VALUES (1019, "Swimming", 8, 16, "Y");
+INSERT INTO SportsInfo VALUES (1019, "Tennis", 19, 62, "N");
+INSERT INTO SportsInfo VALUES (1022, "Baseball", 29, 31, "N");
+INSERT INTO SportsInfo VALUES (1023, "Basketball", 14, 8, "Y");
+INSERT INTO SportsInfo VALUES (1023, "Tennis", 1, 56, "Y");
+INSERT INTO SportsInfo VALUES (1026, "Cricket", 23, 37, "Y");
+INSERT INTO SportsInfo VALUES (1033, "Soccer", 45, 45, "Y");
+INSERT INTO SportsInfo VALUES (1035, "Curling", 50, 94, "N");

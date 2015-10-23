@@ -1,15 +1,14 @@
-SELECT c.dno,
-	(SELECT SUM() FROM (SELECT )
-    FROM Course c, Enrolled_in e ORDER BY dno ASC;
+SELECT whoisliked, COUNT(wholikes) AS count FROM Likes GROUP BY(whoisliked) ORDER BY count DESC;
+select * from plays_games;
+INSERT into plays_games values("1002",'1','20');
+
     
-SELECT c.dno, (SELECT SUM(enrol.count) FROM 
-(SELECT COUNT(stuid) AS count FROM Enrolled_in e, Course co WHERE e.cid = co.cid GROUP BY (co.dno)) AS enrol) AS Enrollment
-FROM Course c, Enrolled_in e GROUP BY(dno);
-
-
-
-SELECT COUNT(e.stuid) 
-FROM Course c, Enrolled_in e WHERE c.cid = e.cid GROUP BY(dno);
-
-SELECT d.division, (SELECT SUM(r.result) FROM (SELECT COUNT(e.stuid) AS result
-FROM Course c, Enrolled_in e WHERE c.cid = e.cid GROUP BY(c.dno)) AS r GROUP BY (d.Division)) AS Enrollment FROM Department d GROUP BY(division)
+SELECT result.cid FROM
+	(SELECT e.cid FROM Enrolled_in e,
+		(SELECT stuid FROM Plays_games GROUP BY stuid HAVING SUM(hours_played)>50) AS Game
+		WHERE e.stuid = Game.stuid ORDER BY cid) AS result,
+        (SELECT e.cid, COUNT(e.stuid) AS count FROM Enrolled_in e,
+		(SELECT stuid FROM Plays_games GROUP BY stuid HAVING SUM(hours_played)>50) AS Game
+		WHERE e.stuid = Game.stuid GROUP BY cid) AS result2 
+	ORDER BY result2.count
+    

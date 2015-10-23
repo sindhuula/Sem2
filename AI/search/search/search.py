@@ -98,11 +98,9 @@ def depthFirstSearch(problem):
                 state, direction, cost  = successors
                 if not state in visitedStates:
                     if problem.isGoalState(state):
+                        print state
                         return popDirection + [direction]
-                    checkStack.push((state,popDirection+
-                                     +
-
-                                     [direction]))
+                    checkStack.push((state,popDirection+[direction]))
                     visitedStates = visitedStates+[popState]
 
 def breadthFirstSearch(problem):

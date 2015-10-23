@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/pre-dexed/debug/classes-7ec741603ae24ecb6d4fc121b741323e6d7cb8c6.jar" />
-    </item>
-    <item
-        jar="/home/tsorrels/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jar="C:\Users\Sindhuula\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-c083be7a7979af411adbed5f24096ac82a30523f.jar" />
+        <dex dex="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-619ae01ca0518924bcdaf6a7457d7a3453f11b66.jar" />
     </item>
     <item
-        jar="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jar="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/pre-dexed/debug/classes-d41ff5a00e1ad6d4140da854966d5b570374dea1.jar" />
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\pre-dexed\debug\classes-9218a00fb06eb7ca95e0c86bc580eb98080c3a90.jar" />
     </item>
     <item
-        jar="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jar="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/home/tsorrels/git/2015-group-13/frontEnd/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-f88cf5767112e6c8adf84cadafbdb2ba1645beff.jar" />
+        <dex dex="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-37d14f0cde85f082c1568687630bec903c9e5f32.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\Sindhuula\Desktop\MS\Sem 2\Sem2\OOSE\2015-group-13\frontEnd\app\build\intermediates\pre-dexed\debug\classes-772dc28669cd3b972771344b43d2e7b984da014f.jar" />
     </item>
 
 </items>

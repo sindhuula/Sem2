@@ -5,7 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
+
+/**
+ * In this activity, a user can create a new game and send a request to play with other users or
+ * against an AI.
+ */
+
 public class CreateGameActivity extends AppCompatActivity {
+
+    public String userID;
+    public String gameID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +47,26 @@ public class CreateGameActivity extends AppCompatActivity {
     }
 
 
-    public void inviteAI(){
-        // call to server, create game with AI
+    /**
+     * Called when user clicks to play against AI; sends request to server to create game with
+     * this userID and an AI
+     * @param userID            Identifies user to server
+     */
+    public void inviteAI(String userID, String gameID){
 
         return;
     }
 
-    public void inviteFriends(){
-        // launch inviteFriendsActivity
+
+    /**
+     * Sends request to server to invite other users to join current game.
+     * @param userID                Identifies user to server
+     * @param gameID                Identifies game to server
+     * @param inviteUser            ArrayList of strings representing userIDs to invite
+     */
+    public void inviteFriends(String userID, String gameID, ArrayList<String> inviteUser){
+
+
         return;
     }
 
