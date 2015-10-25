@@ -57,5 +57,16 @@ public class UserDAO extends DataAccessObject<User> {
         // TODO Auto-generated method stub
         
     }
+    
+    public void update(String challengedID, String challengerID, String gameID)
+    {
+        //Update user's record with the new data.
+        /*This may or maynot be right
+        collection.update(
+                {'id':{challengedID}},
+        {$set:{'challenges':challengerID,'gameID':gameID}}
 
+        )
+        */
+    }
 }

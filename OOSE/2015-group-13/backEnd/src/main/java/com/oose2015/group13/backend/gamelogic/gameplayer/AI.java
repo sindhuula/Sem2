@@ -12,6 +12,10 @@ public class AI extends Player {
     public AI(User parentUser) {
         
     }
+    
+    public AI() {
+        
+    }
 
     private String algorithmName;
     

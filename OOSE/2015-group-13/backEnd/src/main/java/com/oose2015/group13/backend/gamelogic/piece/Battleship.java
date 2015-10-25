@@ -8,5 +8,6 @@ package com.oose2015.group13.backend.gamelogic.piece;
 public class Battleship extends Ship {
     public Battleship() {
         numberTilesRemaining = 4;
+        pieceName = "Battleship";
     }
 }

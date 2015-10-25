@@ -1,3 +1,4 @@
+
 package com.oose2015.group13.backend.gamelogic.piece;
 
 /**
@@ -7,5 +8,6 @@ package com.oose2015.group13.backend.gamelogic.piece;
 public class Tank extends LandPiece {
     public Tank() {
         numberTilesRemaining = 1;
+        pieceName = "Tank";
     }
 }
