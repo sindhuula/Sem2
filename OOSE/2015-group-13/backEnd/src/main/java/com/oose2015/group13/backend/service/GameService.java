@@ -9,6 +9,7 @@ import com.oose2015.group13.backend.datalayer.GameDAO;
 import com.oose2015.group13.backend.datalayer.UserDAO;
 import com.oose2015.group13.backend.gamelogic.game.Game;
 import com.oose2015.group13.backend.gamelogic.gameboard.Result;
+import com.oose2015.group13.backend.gamelogic.gameplayer.AI;
 import com.oose2015.group13.backend.gamelogic.gameplayer.HumanPlayer;
 import com.oose2015.group13.backend.gamelogic.gameplayer.Player;
 import com.oose2015.group13.backend.user.User;
@@ -71,18 +72,34 @@ public class GameService extends Service<Game> {
         User user = userDAO.find(jsonObj.getString("userID"));
         Player player = new HumanPlayer(user);
         
+        //Add player to User's list of players
+        user.addPlayer(player);
+        
         //TODO - game init with settings
         Game game = new Game(player);
         String dummyID = String.valueOf(games.size());
         game.setGameID(dummyID);
         games.put(dummyID, game);
-        
-        for(Object userID : jsonObj.getJSONArray("challengedUserIDs")) {
-            String id = String.valueOf(userID);
-            User challengedUser = userDAO.find(id);
-            Player challengedPlayer = new HumanPlayer(challengedUser);
-            game.playerJoined(challengedPlayer, false);
+
+        //if it's a single player game, challengedUserIDs will be an empty array.
+        //if length of the array is not 0, add the challenged Users to game
+        if(jsonObj.getJSONArray("challengedUserIDs").length() == 0) {
+            //Start a game with AI
+            game.playerJoined(new AI(), true);
+        } else {
+            //Start a game with the other players
+            for(Object userID : jsonObj.getJSONArray("challengedUserIDs")) {
+                String id = String.valueOf(userID);
+                User challengedUser = userDAO.find(id);
+                Player challengedPlayer = new HumanPlayer(challengedUser);
+                //Update user's record to reflect the new challenge
+                userDAO.update(id,user.getUserID(),dummyID);
+                //Add player to user's list of players, so user can get to their games
+                challengedUser.addPlayer(challengedPlayer);
+                game.playerJoined(challengedPlayer, false);
+            } 
         }
+
         return game;
     }
 

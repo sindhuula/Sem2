@@ -56,6 +56,9 @@ public class Game {
     }
 
     public void setPlayersJoined(Map<Player, Boolean> playersJoined) {
+        for(Player player : playersJoined.keySet()) {
+            player.setGame(this);
+        }
         this.playersJoined = playersJoined;
     }
     

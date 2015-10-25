@@ -7,5 +7,6 @@ package com.oose2015.group13.backend.gamelogic.piece;
 public class Destroyer extends Ship {
     public Destroyer() {
         numberTilesRemaining = 3;
+        pieceName = "Destroyer";
     }
 }

@@ -7,5 +7,6 @@ package com.oose2015.group13.backend.gamelogic.piece;
 public class Submarine extends Ship {
     public Submarine() {
         numberTilesRemaining = 2;
+        pieceName = "Submarine";
     }
 }

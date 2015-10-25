@@ -2,7 +2,6 @@
 package com.oose2015.group13.backend.gamelogic.game;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
@@ -10,8 +9,6 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONObject;
 import org.junit.After;
@@ -26,7 +23,7 @@ import com.oose2015.group13.backend.server.Server;
 
 /**
  * 
- * @author Ben Leibowitz, using code from Todo app test case
+ * using code from Todo app test case
  * @see Todo app
  */
 public class TestNewGame {
@@ -46,15 +43,23 @@ public class TestNewGame {
 
     @Test
     public void testNewGame() {
-                Response resp = request("POST", CTX + "/games/new",
-                        "{^userID^:^myUserID^, ^challengedUserIDs^:[^challengedUserID1^, ^challengedUserID2^], ^gameSettings^:{^boardType^:^myBoardType^, ^boardSize^:10}}".replace('^', '"'));
-                JSONObject json = new JSONObject(resp.content);
-                assertEquals("0", json.getString("gameID"));
+        //Start games with human players
+        Response resp = request("POST", CTX + "/games/new",
+                "{^userID^:^myUserID^, ^challengedUserIDs^:[^challengedUserID1^, ^challengedUserID2^], ^gameSettings^:{^boardType^:^myBoardType^, ^boardSize^:10}}".replace('^', '"'));
+        JSONObject json = new JSONObject(resp.content);
+        assertEquals("0", json.getString("gameID"));
+        
+        Response resp2 = request("POST", CTX + "/games/new",
+                "{^userID^:^frankJoe^, ^challengedUserIDs^:[^challengedUserID1^, ^challengedUserID2^], ^gameSettings^:{^boardType^:^myBoardType^, ^boardSize^:10}}".replace('^', '"'));
+        JSONObject json2 = new JSONObject(resp2.content);
+        assertEquals("1", json2.getString("gameID"));
+        
+        //Start a game with AI
+        Response resp3 = request("POST", CTX + "/games/new",
+                "{^userID^:^djTrump^, ^challengedUserIDs^:[], ^gameSettings^:{^boardType^:^myBoardType^, ^boardSize^:10}}".replace('^', '"'));
+        JSONObject json3 = new JSONObject(resp3.content);
+        assertEquals("2", json3.getString("gameID"));
 
-                Response resp2 = request("POST", CTX + "/games/new",
-                        "{^userID^:^frankJoe^, ^challengedUserIDs^:[^challengedUserID1^, ^challengedUserID2^], ^gameSettings^:{^boardType^:^myBoardType^, ^boardSize^:10}}".replace('^', '"'));
-                JSONObject json2 = new JSONObject(resp2.content);
-                assertEquals("1", json2.getString("gameID"));
     }
 
     //Using request method from todo app test case

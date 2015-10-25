@@ -12,7 +12,7 @@ import com.oose2015.group13.backend.gamelogic.gameboard.TileType;
  * Ship, LandPiece, AmphibiousPiece.
  */
 public abstract class Piece {
-    private String pieceName;
+    protected String pieceName;
     
     //Number of tiles for piece that have not been hit..
     //At the beginning of the game, numberTilesRemaining is the total number of tiles

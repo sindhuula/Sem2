@@ -25,7 +25,7 @@ import com.google.gson.Gson;
 
 /**
  * 
- * @author Ben Leibowitz, using code from Todo app test case
+ * using code from Todo app test case
  * @see Todo app
  */
 public class TestServersideLogin {

@@ -1,0 +1,50 @@
+[33m3e88f9e[m HEAD@{0}: pull: Merge made by the 'recursive' strategy.
+[33m4c735ef[m HEAD@{1}: commit: Same as last commit
+[33mb089018[m HEAD@{2}: commit: same
+[33mf19fd59[m HEAD@{3}: commit: added intent to pass into the ViewGamesActivity
+[33m8c7daaa[m HEAD@{4}: checkout: moving from master to FrontEndGSon
+[33m8c7daaa[m HEAD@{5}: pull: Fast-forward
+[33mfd9834f[m HEAD@{6}: checkout: moving from AndroidLoginNoGooglePlus to master
+[33m5464746[m HEAD@{7}: commit: This branch has already merged and should be delected.
+[33m1f7b415[m HEAD@{8}: commit: login calls server put method and receives json response
+[33mdc3d816[m HEAD@{9}: commit: shadow commit; just pushing branch onto server
+[33mca4a642[m HEAD@{10}: checkout: moving from master to AndroidLoginNoGooglePlus
+[33mfd9834f[m HEAD@{11}: pull: Fast-forward
+[33mca4a642[m HEAD@{12}: checkout: moving from AndroidLoginNoGooglePlus to master
+[33mca4a642[m HEAD@{13}: checkout: moving from master to AndroidLoginNoGooglePlus
+[33mca4a642[m HEAD@{14}: pull: Fast-forward
+[33m65d1848[m HEAD@{15}: checkout: moving from GooglePlusAPI to master
+[33ma2940cc[m HEAD@{16}: commit: first try at google API, Gradle does not build
+[33m65d1848[m HEAD@{17}: checkout: moving from master to GooglePlusAPI
+[33m65d1848[m HEAD@{18}: pull: Fast-forward
+[33m5e5b992[m HEAD@{19}: checkout: moving from frontEndRESTMethods to master
+[33m6a4decb[m HEAD@{20}: commit: shadow commit; no real changes
+[33m29f1f92[m HEAD@{21}: commit: created flow of app to begin a start screen, then call login activity, then call view games activity. App ends there. The thread to make REST method calls is inactive, meaning it is not called in the login activity.
+[33mc0d5ff4[m HEAD@{22}: commit: front end start login activity and added login button and login threading code
+[33me981e47[m HEAD@{23}: commit: in front end, added internet user permissions and thread to make REST get call
+[33m5e5b992[m HEAD@{24}: checkout: moving from master to frontEndRESTMethods
+[33m5e5b992[m HEAD@{25}: pull: Fast-forward
+[33m70d2195[m HEAD@{26}: commit: added android javadoc comments in code
+[33m242859a[m HEAD@{27}: commit: added android javadocs
+[33m4ee1a85[m HEAD@{28}: commit: added more function prototypes to frond end
+[33m53c89b5[m HEAD@{29}: pull: Fast-forward
+[33m22c22f0[m HEAD@{30}: commit: added adroid function prototypes and comments
+[33mff64e1e[m HEAD@{31}: pull: Fast-forward
+[33m6007d1e[m HEAD@{32}: pull: Merge made by the 'recursive' strategy.
+[33m088156b[m HEAD@{33}: commit: added method prototypes in android and start javadoc in android again again
+[33m43447f4[m HEAD@{34}: pull: Merge made by the 'recursive' strategy.
+[33m0133034[m HEAD@{35}: commit: added method prototypes in android and start javadoc in android again
+[33m4e63eaf[m HEAD@{36}: pull: Merge made by the 'recursive' strategy.
+[33m6c67f0c[m HEAD@{37}: commit: added method prototypes in android and start javadoc in android
+[33mf67f118[m HEAD@{38}: commit (merge): re-did android directory structure
+[33m7af3902[m HEAD@{39}: commit: ghost commit
+[33m263ea4c[m HEAD@{40}: commit: adding front end package
+[33m981b95c[m HEAD@{41}: pull: Fast-forward
+[33md95eb41[m HEAD@{42}: checkout: moving from Tyler to master
+[33mee87c3c[m HEAD@{43}: checkout: moving from master to Tyler
+[33md95eb41[m HEAD@{44}: checkout: moving from Tyler to master
+[33mee87c3c[m HEAD@{45}: commit: test commit
+[33mc4c3fbf[m HEAD@{46}: checkout: moving from master to Tyler
+[33md95eb41[m HEAD@{47}: pull: Merge made by the 'recursive' strategy.
+[33mdfcdec5[m HEAD@{48}: commit: I committed this test file
+[33m3b99370[m HEAD@{49}: clone: from https://github.com/jhu-oose/2015-group-13.git
